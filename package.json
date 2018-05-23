@@ -1,6 +1,7 @@
 {
   "name": "p5stuff",
   "version": "0.1.0",
+  "homepage": "https://miikka-alatalo.github.io/P5jsDoodles/",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^1.0.0",
@@ -15,9 +16,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
-    "@types/node": "^10.1.2"
+    "@types/node": "^10.1.2",
+    "gh-pages": "^1.1.0"
   }
 }
