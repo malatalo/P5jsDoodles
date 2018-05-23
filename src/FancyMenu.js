@@ -44,8 +44,9 @@ class FancyMenu extends Component {
     for (var key in sketches) {
       optionsArray.push(key)
     }
+    let initSketch = window.location.hostname === 'localhost'?optionsArray[0]:null;
     this.state={
-      sketchChoice: null,
+      sketchChoice: initSketch,
       optionsArray: optionsArray
     }
   }
