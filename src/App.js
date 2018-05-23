@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
-import P5Wrapper from 'react-p5-wrapper';
+import FancyMenu from './FancyMenu';
 
 const sketches = require('./sketches');
 
@@ -23,14 +23,15 @@ class App extends Component {
   }
 
   render = () => {
-    return (<div className="App">
+    return(<FancyMenu/>)
+    /*return (<div className="App">
       <div>
         <select value={this.state.value} onChange={this.handleChange}>
-            {optionsArray.map(opt=>opt)}
-          </select>
+          {optionsArray.map(opt => opt)}
+        </select>
       </div>
       <P5Wrapper sketch={sketches[this.state.value]}/>
-    </div>);
+    </div>);*/
   }
 }
 
