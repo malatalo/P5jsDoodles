@@ -6,5 +6,6 @@ export default function sketch(_) {
 
   _.draw = () => {
     _.rect(_.width/2-10, _.height/2-10, 20, 20)
+    _.noLoop();
   };
 };

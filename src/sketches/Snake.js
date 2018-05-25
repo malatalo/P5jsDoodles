@@ -3,6 +3,7 @@ export default function sketch(_) {
   _.setup = () => {
     _.createCanvas(800, 800);
     _.snek = new Snake(_);
+    _.frameRate(5);
   };
 
   _.draw = () => {
@@ -24,7 +25,7 @@ export default function sketch(_) {
 function Snake(_) {
   this.x = 0;
   this.y = 0;
-  this.xs = 1;
+  this.xs = 10;
   this.ys = 0;
 
   this.move = () => {

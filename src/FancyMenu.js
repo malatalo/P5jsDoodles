@@ -6,7 +6,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import DoodleChoice from './DoodleChoice';
-import P5Wrapper from 'react-p5-wrapper';
+import P5Wrapper from './slin12/P5Wrapper';
 
 const sketches = require('./sketches');
 
@@ -51,7 +51,16 @@ class FancyMenu extends Component {
     }
   }
 
-  changeChoice = (newChoice) => this.setState({sketchChoice: newChoice});
+  changeChoice = (newChoice) => {
+    this.setState({sketchChoice: null}, () => {
+      this.workAround(newChoice)
+    });
+  }
+
+  // Workaround for P5 not unmounting (endless rendering) after sketch change
+  workAround = (newChoice) => {
+    this.setState({sketchChoice: newChoice});
+  }
 
   render() {
     const { classes } = this.props;
@@ -70,7 +79,7 @@ class FancyMenu extends Component {
         </Drawer>
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          <P5Wrapper sketch={sketches[this.state.sketchChoice]}/>
+          {this.state.sketchChoice&&<P5Wrapper sketch={sketches[this.state.sketchChoice]}/>}
         </main>
       </div>
     );
