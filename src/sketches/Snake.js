@@ -8,12 +8,12 @@ export default function sketch(_) {
   };
 
   _.draw = () => {
-    _.appleHitReg();
     _.background(60);
-    _.apple.draw();
-    _.snake.draw();
     _.snake.move();
+    _.snake.draw();
+    _.appleHitReg();
     _.snakeHitReg();
+    _.apple.draw();
   };
 
   _.appleHitReg = () => {
@@ -35,9 +35,18 @@ export default function sketch(_) {
   }
 
   _.snakeHitReg = () => {
-    if(_.dieded()){
-      console.log("dieded");
+    if (_.dieded()) {
       _.noLoop();
+      _.textStyle(_.BOLD);
+      _.textSize(100);
+      _.fill(50);
+      _.text("DED", _.width / 4 - 3, _.height / 2 - 3);
+      _.fill(255)
+      _.text("DED", _.width / 4, _.height / 2);
+      _.fill(50);
+      _.text("DED", _.width / 4 + 3, _.height / 2 + 3);
+      _.fill(255)
+      _.text("DED", _.width / 4 + 6, _.height / 2 + 6);
     }
   }
 
@@ -45,12 +54,14 @@ export default function sketch(_) {
     if (_.snake.x === pos.x && _.snake.y === pos.y) {
       return false;
     }
-    return _.snake.snakeBody.filter(b => { return b.x === pos.x && b.y === pos.y}).length === 0;
+    return _.snake.snakeBody.filter(b => {
+      return b.x === pos.x && b.y === pos.y
+    }).length === 0;
   }
 
   _.dieded = () => {
-    for(let i =2;i<_.snake.snakeBody.length;i++){
-      if(_.snake.snakeBody[i].x===_.snake.x && _.snake.snakeBody[i].y ===_.snake.y){
+    for (let i = 2; i < _.snake.snakeBody.length; i++) {
+      if (_.snake.snakeBody[i].x === _.snake.x && _.snake.snakeBody[i].y === _.snake.y) {
         return true;
       }
     }
@@ -63,7 +74,16 @@ export default function sketch(_) {
 function Snake(_) {
   this.snakeSize = 20;
   this.snakeLength = 3;
-  this.snakeBody = [{x:80,y:100},{x:60,y:100},{x:40,y:100}];
+  this.snakeBody = [{
+    x: 80,
+    y: 100
+  }, {
+    x: 60,
+    y: 100
+  }, {
+    x: 40,
+    y: 100
+  }];
   this.x = 100;
   this.y = 100;
   this.xs = 20;
