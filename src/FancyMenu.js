@@ -5,6 +5,7 @@ import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import DoodleChoice from './DoodleChoice';
 import P5Wrapper from './slin12/P5Wrapper';
 
@@ -22,6 +23,12 @@ const styles = theme => ({
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
+  },
+  button: {
+    color: '#ffffff',
+  },
+  flex: {
+    flex:1,
   },
   drawerPaper: {
     position: 'relative',
@@ -71,6 +78,10 @@ class FancyMenu extends Component {
             <Typography variant="title" color="inherit" noWrap>
               P5.js doodles - {this.state.sketchChoice?this.state.sketchChoice:"Select one"}
             </Typography>
+            <div className={classes.flex}></div>{/*fugly but works O:)*/}
+            <Button onClick={() => window.location.href="https://github.com/Miikka-Alatalo/P5jsDoodles"} variant="outlined" color="primary" className={classes.button}>
+              View on Github
+            </Button>
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" classes={{paper: classes.drawerPaper,}}>
