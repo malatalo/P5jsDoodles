@@ -54,7 +54,8 @@ class FancyMenu extends Component {
     let initSketch = window.location.hostname === 'localhost'?optionsArray[0]:null;
     this.state={
       sketchChoice: initSketch,
-      optionsArray: optionsArray
+      optionsArray: optionsArray,
+      sortAlg: "bubble",
     }
   }
 
@@ -79,7 +80,7 @@ class FancyMenu extends Component {
               P5.js doodles - {this.state.sketchChoice?this.state.sketchChoice:"Select one"}
             </Typography>
             <div className={classes.flex}></div>{/*fugly but works O:)*/}
-            <Button onClick={() => window.location.href="https://github.com/Miikka-Alatalo/P5jsDoodles"} variant="outlined" color="primary" className={classes.button}>
+            <Button onClick={() => window.location.href="https://github.com/alamiikka/P5jsDoodles"} variant="outlined" color="primary" className={classes.button}>
               View on Github
             </Button>
           </Toolbar>
@@ -90,7 +91,20 @@ class FancyMenu extends Component {
         </Drawer>
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          {this.state.sketchChoice&&<P5Wrapper sketch={sketches[this.state.sketchChoice]}/>}
+          {this.state.sketchChoice&&<P5Wrapper sketch={sketches[this.state.sketchChoice]} sortAlg={this.state.sortAlg}/>}
+
+          {this.state.sketchChoice === "Sort" ? 
+            <div>
+              <Button variant="raised" color="primary" onClick={()=>this.setState({sortAlg: "bubble"})}>
+                Bubble
+              </Button> &nbsp;
+              <Button variant="raised" color="primary" onClick={()=>this.setState({sortAlg: "quick"})}>
+                Quick
+              </Button>
+            </div>
+            :''
+          }
+
         </main>
       </div>
     );
