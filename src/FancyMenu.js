@@ -56,6 +56,7 @@ class FancyMenu extends Component {
       sketchChoice: initSketch,
       optionsArray: optionsArray,
       sortAlg: "bubble",
+      status: "",
     }
   }
 
@@ -91,15 +92,25 @@ class FancyMenu extends Component {
         </Drawer>
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          {this.state.sketchChoice&&<P5Wrapper sketch={sketches[this.state.sketchChoice]} sortAlg={this.state.sortAlg}/>}
+          {this.state.sketchChoice&&<P5Wrapper sketch={sketches[this.state.sketchChoice]} sortAlg={this.state.sortAlg} status={this.state.status}/>}
 
           {this.state.sketchChoice === "Sort" ? 
             <div>
-              <Button variant="raised" color="primary" onClick={()=>this.setState({sortAlg: "bubble"})}>
+              <Button variant="raised" color="primary" onClick={()=>this.setState({sortAlg: "bubble", status: ""})}>
                 Bubble
               </Button> &nbsp;
-              <Button variant="raised" color="primary" onClick={()=>this.setState({sortAlg: "quick"})}>
-                Quick
+              <Button variant="raised" color="primary" onClick={()=>this.setState({sortAlg: "selection", status: ""})}>
+                Selection
+              </Button> &nbsp;
+              <Button variant="raised" color="primary" onClick={()=>this.setState({sortAlg: "bogo", status: ""})}>
+                Bogo
+              </Button> &nbsp;
+              <br/><br/>
+              <Button variant="raised" color="secondary" onClick={()=>this.setState({status: "stop"})}>
+                stop
+              </Button> &nbsp;
+              <Button variant="raised" color="secondary" onClick={()=>this.setState({status: "resume"})}>
+                resume
               </Button>
             </div>
             :''
