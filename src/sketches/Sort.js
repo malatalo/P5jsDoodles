@@ -16,7 +16,6 @@ export default function sketch(_) {
   };
 
   _.draw = () => {
-    console.log("sortdraw")
     _.background(0);
     _.stroke(210);
     values.map((val, i) => _.line(i, _.height, i, _.height - val));
@@ -26,13 +25,10 @@ export default function sketch(_) {
   _.myCustomRedrawAccordingToNewPropsHandler = (props) => {
     if (props.status) {
       if (props.status === "stop") {
-        console.log("stop");
         _.noLoop();
         stopped = true;
         return;
       } else if (props.status === "resume") {
-        console.log("resume");
-
         _.loop();
         stopped = false;
         return;

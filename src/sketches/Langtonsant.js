@@ -13,7 +13,7 @@ export default function sketch(_) {
     DOWN: 2,
     LEFT: 3
   };
-  let heading = 0;
+  let heading = 3;
   const steps = 5;
 
   _.setup = () => {
@@ -30,7 +30,6 @@ export default function sketch(_) {
   _.draw = () => {
     for (let i = 0; i < steps; i++) {
       _.background(255);
-      _.text("may be heavy to run", 0, 10);
       _.fill(0);
 
       if (grid[antX][antY]) {
@@ -49,7 +48,6 @@ export default function sketch(_) {
       }
       move();
       if (antX <= 0 || antX > (gridSize - 1)  || antY < 0 || antY > (gridSize - 1)) {
-        console.log("noloop");
         _.noLoop()
       };
     }
