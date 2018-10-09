@@ -1,7 +1,7 @@
 {
   "name": "p5stuff",
   "version": "0.1.0",
-  "homepage": "https://miikka-alatalo.github.io/P5jsDoodles/",
+  "homepage": "https://alamiikka.github.io/P5jsDoodles/",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^1.0.0",
